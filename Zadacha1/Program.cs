@@ -16,51 +16,51 @@ int range = InputNumbers("Введите диапазон: от 1 до ");
 
 int InputNumbers(string input)
 {
-  Console.Write(input);
-  int output = Convert.ToInt32(Console.ReadLine());
-  return output;
+    Console.Write(input);
+    int output = Convert.ToInt32(Console.ReadLine());
+    return output;
 }
 
 void CreateArray(int[,] matrix)
 {
-  for (int i = 0; i < matrix.GetLength(0); i++)
-  {
-    for (int j = 0; j < matrix.GetLength(1); j++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-      matrix[i, j] = new Random().Next(range);
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            matrix[i, j] = new Random().Next(range);
+        }
     }
-  }
 }
 
 void WriteArray(int[,] matrix)
 {
-  for (int i = 0; i < matrix.GetLength(0); i++)
-  {
-    for (int j = 0; j < matrix.GetLength(1); j++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-      Console.Write(matrix[i, j] + " ");
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            Console.Write(matrix[i, j] + " ");
+        }
+        Console.WriteLine();
     }
-    Console.WriteLine();
-  }
 }
 
 void OrderArrayLines(int[,] matrix)
 {
-  for (int i = 0; i < matrix.GetLength(0); i++)
-  {
-    for (int j = 0; j < matrix.GetLength(1); j++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-      for (int k = 0; k < matrix.GetLength(1) - 1; k++)
-      {
-        if (matrix[i, k] < matrix[i, k + 1])
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-          int temp = matrix[i, k + 1];
-          matrix[i, k + 1] = matrix[i, k];
-          matrix[i, k] = temp;
+            for (int k = 0; k < matrix.GetLength(1) - 1; k++)
+            {
+                if (matrix[i, k] < matrix[i, k + 1])
+                {
+                    int temp = matrix[i, k + 1];
+                    matrix[i, k + 1] = matrix[i, k];
+                    matrix[i, k] = temp;
+                }
+            }
         }
-      }
     }
-  }
 }
 
 int[,] matrix = new int[rows, columns];
